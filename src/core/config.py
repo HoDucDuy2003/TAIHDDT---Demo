@@ -11,7 +11,7 @@ class Config:
     """Cấu hình hệ thống"""
     
     # ================= AUTHENTICATION =================
-    TOKEN: str = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTAyMjMzNTE4IiwidHlwZSI6MiwiZXhwIjoxNzcyMTg5NDM4LCJpYXQiOjE3NzIxMDMwMzh9.YtEmXsAn7if8P5_WBLMGcTAKQ6VcXhlUxIYErhIb1UvtYwSS6ijq-GNhP_NU9jzU5HpF2_2EO9hOv9iIPTwkVg"
+    TOKEN: str = ""
     
     # ================= API ENDPOINTS =================
     BASE_URL: str = "https://hoadondientu.gdt.gov.vn:30000"
