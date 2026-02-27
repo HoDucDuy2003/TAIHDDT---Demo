@@ -1,0 +1,2219 @@
+[
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 8,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "457410000"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "95d86d25-3645-4e38-a85a-33fdde6e011b",
+    "hsgoc": "87a30355-7890-4831-87bf-b3d153f35103",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "ccc9420c-7419-446f-8539-6180684c2d68",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "000F7A509EBFB14AE88FACDFB0046B4484",
+    "mtdiep": null,
+    "mtdtchieu": "V0105987432E3105578255B4E9A9C1DFE75909F2897",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-02-05T07:09:48.867Z",
+    "ncnhat": "2026-02-05T07:09:48.875Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-02-05T07:09:40Z",
+    "nmdchi": "BT18-07, Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội, Việt Nam",
+    "nmmst": "0108754933",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ ECO",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-02-05T07:09:48.795Z",
+    "ntnhan": "2026-02-05T07:09:48.751Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-02-04T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 457410000.0,
+    "tgtthue": 36592800.0,
+    "tgtttbchu": "Bốn  trăm chín  mươi bốn  triệu không  trăm lẻ hai  nghìn tám  trăm đồng.",
+    "tgtttbso": 494002800.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202602,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 457410000.0,
+        "tthue": 36592800.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "PSH4VQG481Rtac"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "494002800"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "eco",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-02-05T14:09:40\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-02-05T14:09:48\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "ccc9420c-7419-446f-8539-6180684c2d68",
+        "id": "410b3b77-6a64-4d51-b669-af9944f3a2d0",
+        "dgia": 23160.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 19750.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Dầu gốc 150N",
+        "thtcthue": null,
+        "thtien": 457410000.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "36592800"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "494002800"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "457410000"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009964000001100102233518020110306C26TMH0401805082026020506104.940028E8",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 9,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "503428000"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "48b7f3d4-3efc-4c86-9beb-5e0379a02c48",
+    "hsgoc": "e0bb6607-cefb-4b50-8755-2b58d01c763c",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "13856750-d671-46c4-9097-7901c67fb2d5",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "00B7579299D5914CE4A842362C8315FDDF",
+    "mtdiep": null,
+    "mtdtchieu": "V01059874328B1DBA0DB7B34D60B6F80D82BFDF74BF",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-02-05T07:09:48.722Z",
+    "ncnhat": "2026-02-05T07:09:48.729Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-02-05T07:09:40Z",
+    "nmdchi": "BT18-07, Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội, Việt Nam",
+    "nmmst": "0108754933",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ ECO",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-02-05T07:09:48.687Z",
+    "ntnhan": "2026-02-05T07:09:48.646Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-02-04T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 503428000.0,
+    "tgtthue": 40274240.0,
+    "tgtttbchu": "Năm  trăm bốn  mươi ba  triệu bảy  trăm lẻ hai  nghìn hai  trăm bốn  mươi đồng.",
+    "tgtttbso": 543702240.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202602,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 503428000.0,
+        "tthue": 40274240.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "O8VT76KC71giHO"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "543702240"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "eco",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-02-05T14:09:40\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-02-05T14:09:48\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "13856750-d671-46c4-9097-7901c67fb2d5",
+        "id": "b8de4e03-f245-4398-9f63-8a08267da625",
+        "dgia": 25400.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 19820.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Dầu gốc 500N",
+        "thtcthue": null,
+        "thtien": 503428000.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "40274240"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "543702240"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "503428000"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009965000001100102233518020110306C26TMH0401905082026020506115.4370224E8",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 7,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "27215394"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "b3bce214-e173-4070-8bbc-c87cc6369a55",
+    "hsgoc": "2cf19abf-a79a-41bf-b81e-6bfa29b80d59",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "614b4bd9-f379-49fd-88c0-420bfee62d2d",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "006BE50393B5574BB0A73D1AB51334E94C",
+    "mtdiep": null,
+    "mtdtchieu": "V0105987432B49AFEDE48484461A3489551EFF13499",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-27T09:52:56.640Z",
+    "ncnhat": "2026-01-27T09:52:56.646Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-27T09:52:49Z",
+    "nmdchi": "44/18/7 Đường số 8, Tổ 7, Khu phố ích Thạch, Phường Long Phước, TP Hồ Chí Minh, Việt Nam",
+    "nmmst": "0316282304",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY TNHH KIẾN TRÚC XÂY DỰNG TM TRƯỜNG THÀNH PHÁT",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-27T09:52:56.604Z",
+    "ntnhan": "2026-01-27T09:52:56.564Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-26T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 27215394.0,
+    "tgtthue": 2177232.0,
+    "tgtttbchu": "Hai  mươi chín  triệu ba  trăm chín  mươi hai  nghìn sáu  trăm hai  mươi sáu  đồng.",
+    "tgtttbso": 29392626.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 27215394.0,
+        "tthue": 2177232.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "2OYBQL8O8"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "29392626"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "TTP",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-27T16:52:49\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-27T16:52:56\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "614b4bd9-f379-49fd-88c0-420bfee62d2d",
+        "id": "f883f1b1-0362-4479-87da-5b99a4c5ce7a",
+        "dgia": 214001.24,
+        "dvtinh": "m2",
+        "ltsuat": "8%",
+        "sluong": 127.174,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Ván lát sàn 1220*230*8 P0266 Eforte Delux",
+        "thtcthue": null,
+        "thtien": 27215394.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "2177231"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "29392625"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "27215394"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009965000001100102233518020110306C26TMH0401705082026012706112.9392626E7",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 4,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "478975000"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "d51573ba-2f6e-4d5a-a24a-1ea85c7d76db",
+    "hsgoc": "e0074943-e619-49a3-86a8-5d6016e5e4c9",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "e5b4efd3-3c81-467f-bcc8-a1c9443ca805",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "00517EB12C41D2461CA7BA6D2FD9653B93",
+    "mtdiep": null,
+    "mtdtchieu": "V010598743296CCDDBE723548A291F8FC7026CBAE51",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-23T02:59:52.762Z",
+    "ncnhat": "2026-01-23T02:59:52.768Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-23T02:59:46Z",
+    "nmdchi": "Khu công nghiệp phía Nam, Phường Văn Phú, Tỉnh Lào Cai, Việt Nam",
+    "nmmst": "5200466372",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY CỔ PHẦN AN TIẾN INDUSTRIES",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-23T02:59:52.527Z",
+    "ntnhan": "2026-01-23T02:59:52.485Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-22T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 478975000.0,
+    "tgtthue": 38318000.0,
+    "tgtttbchu": "Năm  trăm mười  bảy  triệu hai  trăm chín  mươi ba  nghìn đồng.",
+    "tgtttbso": 517293000.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 478975000.0,
+        "tthue": 38318000.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "ZSCVYSZUF"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "517293000"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "antien",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-23T09:59:46\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-23T09:59:52\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "e5b4efd3-3c81-467f-bcc8-a1c9443ca805",
+        "id": "2eed548e-bb0a-4bfa-8b46-eb73c7334b4b",
+        "dgia": 24500.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 19550.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Dầu chế biến gốc Paraphin 250G \nXuất xứ: Hàn Quốc",
+        "thtcthue": null,
+        "thtien": 478975000.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "38318000"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "517293000"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "478975000"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009963000001100102233518020110306C26TMH0401405082026012306095.17293E8",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 5,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "517041000"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "01ccc6b4-4029-4dae-ba3a-d244e8589997",
+    "hsgoc": "9b616e85-c255-4e42-8306-423be6317aa3",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "7b793c8f-e724-47d0-b352-b6e54caf23fc",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "00C0A5AE92BA594B0F9027819CDF2ED13E",
+    "mtdiep": null,
+    "mtdtchieu": "V0105987432FB18338C8B8344518FD488037A6C06B1",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-23T09:59:13.805Z",
+    "ncnhat": "2026-01-23T09:59:13.813Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-23T09:59:08Z",
+    "nmdchi": "BT18-07, Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội, Việt Nam",
+    "nmmst": "0108754933",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ ECO",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-23T09:59:13.770Z",
+    "ntnhan": "2026-01-23T09:59:13.715Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-22T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 517041000.0,
+    "tgtthue": 41363280.0,
+    "tgtttbchu": "Năm  trăm năm  mươi tám  triệu bốn  trăm lẻ bốn  nghìn hai  trăm tám  mươi đồng.",
+    "tgtttbso": 558404280.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 517041000.0,
+        "tthue": 41363280.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "S7EFI2RL41VqDg"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "558404280"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "eco",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-23T16:59:08\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-23T16:59:13\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "7b793c8f-e724-47d0-b352-b6e54caf23fc",
+        "id": "6de5414b-fd3a-42a6-a715-2360cab362e2",
+        "dgia": 26100.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 19810.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Dầu gốc 500N",
+        "thtcthue": null,
+        "thtien": 517041000.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "41363280"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "558404280"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "517041000"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009965000001100102233518020110306C26TMH0401505082026012306115.5840428E8",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 6,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "493787272"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "845545f0-4448-41aa-82be-20890c59193f",
+    "hsgoc": "602463b1-c78c-4bc1-8882-f21e3c74c518",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "8bdd7150-ef06-47a7-ace6-d2d61fb2a821",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "0007C85F99A6FF4CA5B6EA8992A41F93C4",
+    "mtdiep": null,
+    "mtdtchieu": "V0105987432E6340A2E579B418E86BC81B986B10747",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-23T09:59:29.101Z",
+    "ncnhat": "2026-01-23T09:59:29.108Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-23T09:59:22Z",
+    "nmdchi": "BT18-07, Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội, Việt Nam",
+    "nmmst": "0108754933",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ ECO",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-23T09:59:29.067Z",
+    "ntnhan": "2026-01-23T09:59:29.026Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-22T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 493787272.0,
+    "tgtthue": 39502982.0,
+    "tgtttbchu": "Năm  trăm ba  mươi ba  triệu hai  trăm chín  mươi nghìn hai  trăm năm  mươi bốn  đồng.",
+    "tgtttbso": 533290254.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 493787272.0,
+        "tthue": 39502982.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "TO8TS3C9X1mHWe"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "533290254"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "eco",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-23T16:59:22\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-23T16:59:29\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "8bdd7150-ef06-47a7-ace6-d2d61fb2a821",
+        "id": "61e5f66f-37a3-4ed8-bc71-a55754cdf6bb",
+        "dgia": 22775.1,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 8080.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Dầu gốc 150N",
+        "thtcthue": null,
+        "thtien": 184022808.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "14721825"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "198744633"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "184022808"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      },
+      {
+        "idhdon": "8bdd7150-ef06-47a7-ace6-d2d61fb2a821",
+        "id": "e506c2a0-e190-4fb4-99bb-582748b52725",
+        "dgia": 25856.8,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 11980.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 2,
+        "tchat": 1,
+        "ten": "Dầu gốc 500N",
+        "thtcthue": null,
+        "thtien": 309764464.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 2,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "24781157"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "334545621"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "309764464"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009966000001100102233518020110306C26TMH0401605082026012306125.33290254E8",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 3,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "3738000000"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "086d5487-3559-40fc-b389-393ff901ba81",
+    "hsgoc": "9e04f561-a17c-4729-963b-5c2d04828ccc",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "3c305452-9bef-4c16-9de9-b6bc4a711bae",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "00315F0BFC2E1A4E4691B6DAF930936E03",
+    "mtdiep": null,
+    "mtdtchieu": "V01059874324F7C89B6302D4A459855E13FAD0DB250",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-21T03:18:08.264Z",
+    "ncnhat": "2026-01-21T03:18:08.272Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-21T03:17:57Z",
+    "nmdchi": "Số 15, Ngách 9/28 phố Trần Quốc Hoàn, Tổ 6, Phường Cầu Giấy, TP Hà Nội, Việt Nam",
+    "nmmst": "0107551031",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY CỔ PHẦN THƯƠNG MẠI NHỰA HÀ NỘI",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-21T03:18:08.231Z",
+    "ntnhan": "2026-01-21T03:18:08.189Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-20T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 3738000000.0,
+    "tgtthue": 299040000.0,
+    "tgtttbchu": "Bốn  tỷ không  trăm ba  mươi bảy  triệu không  trăm bốn  mươi nghìn đồng.",
+    "tgtttbso": 4037040000.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 3738000000.0,
+        "tthue": 299040000.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "9UUTSPW6L1nszG"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "4037040000"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "nhuahanoi",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-21T10:17:57\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-21T10:18:08\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "3c305452-9bef-4c16-9de9-b6bc4a711bae",
+        "id": "46c8539c-330a-4b8e-979f-5ce3c189e4c0",
+        "dgia": 26700.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 140000.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Hạt nhựa HDPE M6000S",
+        "thtcthue": null,
+        "thtien": 3738000000.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "299040000"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "4037040000"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "3738000000"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009963000001100102233518020110306C26TMH0401305082026012106094.03704E9",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 2,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "2916000000"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "edcdb3ba-9420-4d6e-b51e-ed545a775fb7",
+    "hsgoc": "62d3020f-24d5-484f-a78f-22f244de3ae3",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "9768a660-b713-483f-b05b-d49c457a2a3a",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "00C1F2373A07CE429FB78749418BF41AD8",
+    "mtdiep": null,
+    "mtdtchieu": "V010598743278F2A38824154ACDB32B067B8423E527",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-20T10:17:08.607Z",
+    "ncnhat": "2026-01-20T10:17:08.615Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-20T10:17:04Z",
+    "nmdchi": "Số 15, Ngách 9/28 phố Trần Quốc Hoàn, Tổ 6, Phường Cầu Giấy, TP Hà Nội, Việt Nam",
+    "nmmst": "0107551031",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY CỔ PHẦN THƯƠNG MẠI NHỰA HÀ NỘI",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-20T10:17:08.574Z",
+    "ntnhan": "2026-01-20T10:17:08.537Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-19T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 2916000000.0,
+    "tgtthue": 233280000.0,
+    "tgtttbchu": "Ba  tỷ một  trăm bốn  mươi chín  triệu hai  trăm tám  mươi nghìn đồng.",
+    "tgtttbso": 3149280000.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 2916000000.0,
+        "tthue": 233280000.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "TJYQRPBZR"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "3149280000"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "nhuahanoi",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-20T17:17:04\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-20T17:17:08\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "9768a660-b713-483f-b05b-d49c457a2a3a",
+        "id": "2efdaab9-9e47-43e8-b692-36cf00faec1f",
+        "dgia": 24300.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 120000.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Hạt nhựa LLDPE LL220S",
+        "thtcthue": null,
+        "thtien": 2916000000.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "233280000"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "3149280000"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "2916000000"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009963000001100102233518020110306C26TMH0401205082026012006093.14928E9",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  },
+  {
+    "nbmst": "0102233518",
+    "khmshdon": 1,
+    "khhdon": "C26TMH",
+    "shdon": 1,
+    "cqt": "0115",
+    "cttkhac": [
+      {
+        "ttruong": "VATRateOne",
+        "kdlieu": "string",
+        "dlieu": null
+      },
+      {
+        "ttruong": "InvSubTotal",
+        "kdlieu": "string",
+        "dlieu": "875589500"
+      },
+      {
+        "ttruong": "DiscountAmount",
+        "kdlieu": "string",
+        "dlieu": "0"
+      },
+      {
+        "ttruong": "RowPerPage",
+        "kdlieu": "numberic",
+        "dlieu": "10"
+      }
+    ],
+    "dvtte": "VND",
+    "hdon": "01",
+    "hsgcma": "63ad0956-cfb6-444e-9cd0-923ab64411b2",
+    "hsgoc": "64441b57-0cb5-445e-92a2-feb3d3a268bb",
+    "hthdon": 1,
+    "htttoan": 2,
+    "id": "3ba816c2-777b-49e1-a173-17893c716117",
+    "idtbao": null,
+    "khdon": null,
+    "khhdgoc": null,
+    "khmshdgoc": null,
+    "lhdgoc": null,
+    "mhdon": "00A8E9CB9A45734FD6A596C72E9671BE43",
+    "mtdiep": null,
+    "mtdtchieu": "V0105987432F1E2A8D84601443281C1EDAFA45A22C1",
+    "nbdchi": "Số nhà 15B, ngõ 161, tổ 10, phố Hoa Bằng, Phường Yên Hòa, Thành phố Hà Nội, Việt Nam",
+    "chma": null,
+    "chten": null,
+    "nbhdktngay": null,
+    "nbhdktso": null,
+    "nbhdso": null,
+    "nblddnbo": null,
+    "nbptvchuyen": null,
+    "nbstkhoan": null,
+    "nbten": "CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI",
+    "nbtnhang": null,
+    "nbtnvchuyen": null,
+    "nbttkhac": [
+      {
+        "ttruong": "ComBankNo2",
+        "kdlieu": "string",
+        "dlieu": " 105218699"
+      },
+      {
+        "ttruong": "ComBankName2",
+        "kdlieu": "string",
+        "dlieu": "NH TMCP Việt Nam Thịnh Vượng- PGD Hà Thành- CN Kinh Đô- Hà Nội"
+      }
+    ],
+    "ncma": "2026-01-12T10:33:56.233Z",
+    "ncnhat": "2026-01-12T10:33:56.240Z",
+    "ngcnhat": "tvan_softdreams",
+    "nky": "2026-01-12T10:33:52Z",
+    "nmdchi": "BT18-07, Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội, Việt Nam",
+    "nmmst": "0108754933",
+    "nmstkhoan": null,
+    "nmten": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ ECO",
+    "nmtnhang": null,
+    "nmtnmua": null,
+    "nmttkhac": [],
+    "ntao": "2026-01-12T10:33:56.197Z",
+    "ntnhan": "2026-01-12T10:33:56.157Z",
+    "pban": "2.1.0",
+    "ptgui": 1,
+    "shdgoc": null,
+    "tchat": 1,
+    "tdlap": "2026-01-11T17:00:00Z",
+    "tgia": 1.0,
+    "tgtcthue": 875589500.0,
+    "tgtthue": 70047160.0,
+    "tgtttbchu": "Chín  trăm bốn  mươi lăm  triệu sáu  trăm ba  mươi sáu  nghìn sáu  trăm sáu  mươi đồng.",
+    "tgtttbso": 945636660.0,
+    "thdon": "Hóa đơn giá trị gia tăng",
+    "thlap": 202601,
+    "thttlphi": [
+      {
+        "tlphi": null,
+        "tphi": null
+      }
+    ],
+    "thttltsuat": [
+      {
+        "tsuat": "8%",
+        "thtien": 875589500.0,
+        "tthue": 70047160.0,
+        "gttsuat": null
+      }
+    ],
+    "tlhdon": "Hóa đơn giá trị gia tăng",
+    "ttcktmai": 0.0,
+    "tthai": 1,
+    "ttkhac": [
+      {
+        "ttruong": "PortalLink",
+        "kdlieu": "string",
+        "dlieu": "http://0102233518hd.easyinvoice.vn"
+      },
+      {
+        "ttruong": "Fkey",
+        "kdlieu": "string",
+        "dlieu": "YTQJ9P5B51jhgW"
+      }
+    ],
+    "tttbao": 1,
+    "ttttkhac": [
+      {
+        "ttruong": "Amount8",
+        "kdlieu": "decimal",
+        "dlieu": "945636660"
+      }
+    ],
+    "ttxly": 5,
+    "tvandnkntt": "0105987432",
+    "mhso": null,
+    "ladhddt": 1,
+    "mkhang": "eco",
+    "nbsdthoai": "024.3828.1199",
+    "nbdctdtu": null,
+    "nbfax": null,
+    "nbwebsite": null,
+    "nbcks": "{\"Subject\":\"OID.0.9.2342.19200300.100.1.1=MST:0102233518, CN=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, O=CÔNG TY CỔ PHẦN QUỐC TẾ MINH HẢI, S=Hà Nội, C=VN\",\"SerialNumber\":\"54011235F0BD4D438BE07C0312C79752\",\"Issuer\":\"C=VN, O=I-CA, CN=I-CA\",\"NotAfter\":\"2027-01-24T08:11:49\",\"NotBefore\":\"2025-06-02T09:32:15\",\"SigningTime\":\"2026-01-12T17:33:52\"}",
+    "nmsdthoai": null,
+    "nmdctdtu": null,
+    "nmcmnd": null,
+    "nmcks": null,
+    "bhphap": 0,
+    "hddunlap": null,
+    "gchdgoc": null,
+    "tbhgtngay": null,
+    "bhpldo": null,
+    "bhpcbo": null,
+    "bhpngay": null,
+    "tdlhdgoc": null,
+    "tgtphi": null,
+    "unhiem": null,
+    "mstdvnunlhdon": null,
+    "tdvnunlhdon": null,
+    "nbmdvqhnsach": null,
+    "nbsqdinh": null,
+    "nbncqdinh": null,
+    "nbcqcqdinh": null,
+    "nbhtban": null,
+    "nmmdvqhnsach": null,
+    "nmddvchden": null,
+    "nmtgvchdtu": null,
+    "nmtgvchdden": null,
+    "nbtnban": null,
+    "dcdvnunlhdon": null,
+    "dksbke": null,
+    "dknlbke": null,
+    "thtttoan": "Chuyển khoản",
+    "msttcgp": "0105987432",
+    "cqtcks": "{\"Subject\":\"CN=CỤC THUẾ,O=BỘ TÀI CHÍNH,L=Hà Nội,C=VN\",\"SerialNumber\":\"2A05F812673607B0\",\"Issuer\":\"CN=CA phục vụ các cơ quan Nhà nước G2, O=Ban Cơ yếu Chính phủ, C=VN\",\"NotAfter\":\"2030-03-12T16:36:53\",\"NotBefore\":\"2025-03-13T16:36:53\",\"SigningTime\":\"2026-01-12T17:33:56\"}",
+    "gchu": "",
+    "kqcht": null,
+    "hdntgia": null,
+    "tgtkcthue": 0.0,
+    "tgtkhac": 0.0,
+    "nmshchieu": null,
+    "nmnchchieu": null,
+    "nmnhhhchieu": null,
+    "nmqtich": null,
+    "ktkhthue": null,
+    "nmstttoan": null,
+    "nmttttoan": null,
+    "hdhhdvu": [
+      {
+        "idhdon": "3ba816c2-777b-49e1-a173-17893c716117",
+        "id": "0bfc4d44-f28e-4502-b251-057999c23ac1",
+        "dgia": 22150.0,
+        "dvtinh": "Kg",
+        "ltsuat": "8%",
+        "sluong": 39530.0,
+        "stbchu": null,
+        "stckhau": 0.0,
+        "stt": 1,
+        "tchat": 1,
+        "ten": "Dầu gốc 150N",
+        "thtcthue": null,
+        "thtien": 875589500.0,
+        "tlckhau": 0.0,
+        "tsuat": 0.08,
+        "tthue": null,
+        "sxep": 1,
+        "ttkhac": [
+          {
+            "ttruong": "VATAmount",
+            "kdlieu": "decimal",
+            "dlieu": "70047160"
+          },
+          {
+            "ttruong": "Amount",
+            "kdlieu": "decimal",
+            "dlieu": "945636660"
+          },
+          {
+            "ttruong": "ProdSubTotal",
+            "kdlieu": "string",
+            "dlieu": "875589500"
+          }
+        ],
+        "dvtte": null,
+        "tgia": null,
+        "tthhdtrung": []
+      }
+    ],
+    "qrcode": "00020101021202000400260052005300540058005900600062009965000001100102233518020110306C26TMH0401105082026011206119.4563666E8",
+    "ttmstten": null,
+    "ladhddtten": null,
+    "hdxkhau": null,
+    "hdxkptquan": null,
+    "hdgktkhthue": null,
+    "hdonLquans": null,
+    "tthdclquan": false,
+    "pdndungs": null,
+    "hdtbssrses": null,
+    "hdTrung": null,
+    "isHDTrung": null,
+    "hdcttchinh": 0,
+    "dlhquan": null,
+    "dlnhtmai": null,
+    "bltphi": null,
+    "tcsvhdChinh": null
+  }
+]
