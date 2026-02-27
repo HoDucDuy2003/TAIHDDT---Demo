@@ -285,6 +285,7 @@ class LoginWindow:
         result = self.auth.login(username, password, captcha_value, self.captcha_key)
         if result["success"]:
             config.TOKEN = result["token"]
+            self.auth.update_config_file()
             self.root.after(0, lambda: self.on_success(result["token"]))
         else:
             msg = result.get("message", result.get("error", "Lỗi không xác định"))
@@ -608,7 +609,7 @@ class InvoiceApp:
         self.start_date_var.set((today - timedelta(days=30)).strftime("%d/%m/%Y"))
 
         try:
-            if config.TOKEN and config.TOKEN != "DÁN_TOKEN_MỚI_VÀO_ĐÂY":
+            if config.TOKEN and config.TOKEN != "":
                 self.token_var.set(config.TOKEN)
                 self._log("ℹ️  Đã tải token từ đăng nhập\n", "info")
         except Exception:

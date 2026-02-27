@@ -11,7 +11,7 @@ class Config:
     """Cấu hình hệ thống"""
     
     # ================= AUTHENTICATION =================
-    TOKEN: str = ""
+    TOKEN: str = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTAyMjMzNTE4IiwidHlwZSI6MiwiZXhwIjoxNzcyMjcwMzMxLCJpYXQiOjE3NzIxODM5MzF9.cQPUS4PueuuMXN63hdCnUDQHWmc02GGOAPZp6m6rSdbR7yPhWDBquSi0LYgaHG0s5m5UoNVyFDKIk0f3UkaoNQ"
     
     # ================= API ENDPOINTS =================
     BASE_URL: str = "https://hoadondientu.gdt.gov.vn:30000"
@@ -40,15 +40,14 @@ class Config:
     LOG_LEVEL: str = "INFO"
     LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     
-    @classmethod
-    def get_token(cls) -> str:
+
+    def get_token(self) -> str:
         """Lấy TOKEN, ưu tiên từ environment variable"""
-        return os.getenv("INVOICE_TOKEN", cls.TOKEN)
+        return os.getenv("INVOICE_TOKEN", self.TOKEN)
     
-    @classmethod
-    def validate(cls) -> bool:
+    def validate(self) -> bool:
         """Kiểm tra cấu hình hợp lệ"""
-        if cls.get_token() == "DÁN_TOKEN_MỚI_VÀO_ĐÂY":
+        if self.get_token() == "":
             return False
         return True
 
