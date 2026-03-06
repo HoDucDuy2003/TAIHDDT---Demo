@@ -90,6 +90,7 @@ class InvoiceItem:
     unit: str  # Đơn vị tính
     unit_price: float  # Đơn giá
     value_notax: float  # Thành tiền chưa thuế
+    type_tax_rate: str  # Loại thuế suất (GTGT, TTĐB, ...)
     tax_rate: float  # Tỷ suất thuế (%)
     discount: float = 0.0  # Chiết khấu
     value_tax: float = 0.0  # Tiền thuế
@@ -113,6 +114,7 @@ class InvoiceItem:
             unit_price=float(data.get('dgia') or 0),
             value_notax=value_notax,
             discount=data.get('tlckhau'),
+            type_tax_rate = data.get('ltsuat') or "",
             tax_rate = tax_rate,
             value_tax=value_tax
         )
@@ -250,6 +252,7 @@ class Invoice:
                     'unit_price': item.unit_price,
                     'value_notax': item.value_notax,
                     'tax_rate': item.tax_rate,
+                    'type_tax_rate': item.type_tax_rate,
                     'discount': item.discount,
                     'value_tax': item.value_tax
                 }

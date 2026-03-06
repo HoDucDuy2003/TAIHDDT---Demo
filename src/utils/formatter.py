@@ -52,6 +52,7 @@ class DataFormatter:
         'tax_rate': 'Thuế suất',
         'discount': 'Chiết khấu',
         'value_notax': 'Thành tiền chưa thuế',
+        'type_tax_rate': 'Loại thuế',
         'discount' : 'Chiết khấu',
         'value_tax': 'Tiền thuế GTGT',
     }
@@ -60,7 +61,7 @@ class DataFormatter:
         'invoice_template', 'invoice_serial', 'invoice_number', 'invoice_date', 'invoice_currency','lookup_code', 
         'seller_tax_code', 'seller_name', 'seller_address', 
         'buyer_name', 'buyer_address', 'buyer_tax_code',
-        'stt', 'name', 'unit', 'quantity', 'unit_price', 'tax_rate', 
+        'stt', 'name', 'unit', 'quantity', 'unit_price', 'type_tax_rate' ,'tax_rate', 
         'discount', 'value_notax', 'value_tax', 
         'tax_amount', 'total_amount', 'payment_method', 'status', 'processing status','note'
     ]

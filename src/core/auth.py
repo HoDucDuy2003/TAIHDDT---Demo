@@ -4,7 +4,6 @@ Xử lý đăng nhập và lấy token tự động
 Reuse config và session từ các module có sẵn
 """
 
-import cairosvg
 import os
 
 import requests

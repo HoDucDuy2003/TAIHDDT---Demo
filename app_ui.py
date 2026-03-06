@@ -652,6 +652,9 @@ class InvoiceApp:
         if start_dt > end_dt:
             messagebox.showerror("Lỗi ngày", "Ngày bắt đầu phải trước ngày kết thúc!")
             return False
+        if end_dt - start_dt > timedelta(days=30):
+            messagebox.showwarning("Cảnh báo", "Khoảng thời gian vượt quá 30 ngày")
+            return False
 
         return True
 
