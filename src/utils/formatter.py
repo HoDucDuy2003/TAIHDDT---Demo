@@ -53,7 +53,6 @@ class DataFormatter:
         'discount': 'Chiết khấu',
         'value_notax': 'Thành tiền chưa thuế',
         'type_tax_rate': 'Loại thuế',
-        'discount' : 'Chiết khấu',
         'value_tax': 'Tiền thuế GTGT',
     }
     

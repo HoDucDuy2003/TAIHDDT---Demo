@@ -1,14 +1,15 @@
 """
 Invoice Configuration
-Cấu hình ttxly cho từng loại hóa đơn
+Cấu hình endpoint và ttxly cho từng loại hóa đơn
 
-LƯU Ý: 
-- Endpoint /query: Lấy TẤT CẢ trừ POS (không cần filter ttxly)
-- Endpoint /sco-query: Chỉ lấy POS (ttxly=8)
-- Config này chỉ dùng để hiển thị message, KHÔNG dùng để filter API
+Quy tắc endpoint:
+- /query     : Hóa đơn thường (non-POS)
+                + Purchase : ttxly = 5, 6
+                + Sold     : ttxly = 0, 1, 2, 3, 4, 5, 6, 7
+- /sco-query : Máy tính tiền (POS), ttxly = 8
 """
 from enum import Enum
-from typing import Dict, List, Any
+from typing import Dict, List, Optional
 
 class EndpointType(Enum):
     NORMAL = "query"   # Hóa đơn thường
@@ -17,44 +18,43 @@ class EndpointType(Enum):
 class InvoiceConfig:
     """Cấu hình cho các loại hóa đơn"""
     
-    # Cấu hình ttxly cho Purchase
-    PURCHASE_CONFIG = {
-        "non_pos_statuses": [5, 6],
-        "pos_statuses": [8],
-        "status_msg": "5, 6"
+    # ttxly hóa đơn thường theo invoice_type
+    NORMAL_STATUSES: Dict[str, List[int]] = {
+        "purchase": [5, 6],
+        "sold":     [0, 1, 2, 3, 4, 5, 6, 7],
     }
     
-    # Cấu hình ttxly cho Sold
-    SOLD_CONFIG = {
-        "non_pos_statuses": [0, 1, 2, 3, 4, 5, 6, 7],
-        "pos_statuses": [8],
-        "status_msg": "0-7"
-    }
+    # ttxly máy tính tiền (dùng chung cho cả purchase và sold)
+    POS_STATUS: int = 8
     
     @staticmethod
-    def get_default_statuses(invoice_type: str) -> Dict[str, Any]:
-        if invoice_type == "purchase":
-            return InvoiceConfig.PURCHASE_CONFIG.copy()
-        else:  # sold
-            return InvoiceConfig.SOLD_CONFIG.copy()
-    
-    @staticmethod
-    def is_pos_status(status: int) -> bool:
-        return status == 8
-    
+    def get_normal_statuses(invoice_type: str) -> List[int]:
+        """
+        Lấy danh sách ttxly hóa đơn thường theo loại hóa đơn.
+
+        Args:
+            invoice_type: "sold" hoặc "purchase"
+
+        Returns:
+            List ttxly, ví dụ [5, 6] hoặc [0,1,2,3,4,5,6,7]
+        """
+        return InvoiceConfig.NORMAL_STATUSES.get(invoice_type, [])
 
     @staticmethod
-    def get_normal_invoice(path: str = "") -> str:
-        return f"/query/{path}"
-    
+    def is_pos_status(ttxly: Optional[int]) -> bool:
+        return ttxly == InvoiceConfig.POS_STATUS
 
     @staticmethod
-    def get_pos_invoice(path: str = "") -> str:
-        return f"/sco-query/{path}"
-    
+    def get_endpoint(is_pos: bool, path: str = "") -> str:
+        """
+        Trả về đường dẫn endpoint theo loại hóa đơn.
 
-    @staticmethod
-    def split_statuses(statuses: List[int]) -> tuple:
-        pos_statuses = [s for s in statuses if InvoiceConfig.is_pos_status(s)]
-        non_pos_statuses = [s for s in statuses if not InvoiceConfig.is_pos_status(s)]
-        return pos_statuses, non_pos_statuses
+        Args:
+            is_pos: True → /sco-query, False → /query
+            path  : phần path thêm vào sau endpoint gốc
+
+        Returns:
+            Ví dụ: "/query/invoices/purchase"
+        """
+        base = EndpointType.POS.value if is_pos else EndpointType.NORMAL.value
+        return f"/{base}/{path}" if path else f"/{base}"

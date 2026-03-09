@@ -3,6 +3,7 @@ Main Entry Point
 Chạy hệ thống hóa đơn điện tử
 """
 
+
 from src.core import config
 from src.services import InvoiceService
 from src.utils import DataFormatter, FileHandler, setup_logger
@@ -33,8 +34,8 @@ def main():
     # ========== LẤY HÓA ĐƠN KÈM CHI TIẾT ==========
     logger.info("Bắt đầu lấy hóa đơn...")
     
-    START_DATE = "01/02/2026"
-    END_DATE = "28/02/2026"
+    START_DATE = "01/01/2026"
+    END_DATE = "31/01/2026"
     INVOICE_TYPE = "purchase"
 
     result = service.get_all_invoices_with_details(
@@ -42,8 +43,10 @@ def main():
         start_date=START_DATE,
         end_date=END_DATE,
         size=50,
-        return_models=False  # Trả về Invoice objects
+        include_pos=True,
+        return_models=True  # Trả về Invoice objects
     )
+
     
     if result.get("success"):
         invoices = result["all_invoices_with_details"]
@@ -57,27 +60,25 @@ def main():
             print(f"  • Chi tiết thành công: {summary['details_success']}")
             print(f"  • Chi tiết thất bại: {summary['details_failed']}")
         
-        # Lưu file JSON
+        #Lưu file JSON
         print(f"\n💾 Đang lưu {len(invoices)} hóa đơn...")
         json_file = file_handler.save_to_json(invoices, invoice_type=INVOICE_TYPE)
         
         # Chuyển Invoice objects thành dicts
-        # invoices_as_dicts = [invoice.to_dict() for invoice in invoices]
+        invoices_as_dicts = [invoice.to_dict() for invoice in invoices]
         
-        # # Lưu Excel với cột được chọn và đổi tên tiếng Việt - chỉ chạy được khi đã convert sang dict
-        # excel_file = file_handler.save_to_excel(
-        #     invoices_as_dicts,
-        #     invoice_type=INVOICE_TYPE,
-        #     start_date=START_DATE,
-        #     end_date=END_DATE,
-        #     selected_columns=DataFormatter.DEFAULT_EXPORT_COLUMNS,
-        #     column_names=DataFormatter.VIETNAMESE_COLUMN_NAMES
-        # )
-        
-        
+        # Lưu Excel với cột được chọn và đổi tên tiếng Việt - chỉ chạy được khi đã convert sang dict
+        excel_file = file_handler.save_to_excel(
+            invoices_as_dicts,
+            invoice_type=INVOICE_TYPE,
+            start_date=START_DATE,
+            end_date=END_DATE,
+            selected_columns=DataFormatter.DEFAULT_EXPORT_COLUMNS,
+            column_names=DataFormatter.VIETNAMESE_COLUMN_NAMES
+        )
         print(f"\n✅ HOÀN THÀNH!")
         print(f"📁 JSON: {json_file}")
-        # print(f"📁 EXCEL: {excel_file}")
+        print(f"📁 EXCEL: {excel_file}")
 
 
 

@@ -9,23 +9,21 @@ from typing import Optional, Dict, List, Any
 
 from ..core import config, APIClient
 from ..models import Invoice
-from .invoice_config import InvoiceConfig,EndpointType
+from .invoice_config import InvoiceConfig
 from .invoice_helpers import InvoiceEndpointCaller, InvoiceResultMerger
 
 
 class InvoiceService:
     """Service xử lý nghiệp vụ hóa đơn"""
-    
+
     def __init__(self, api_client: Optional[APIClient] = None):
-        """
-        Khởi tạo service
-        
-        Args:
-            api_client: API client instance
-        """
-        self.api_client = api_client or APIClient()
+        self.api_client      = api_client or APIClient()
         self.endpoint_caller = InvoiceEndpointCaller(self.api_client)
-    
+
+    # ------------------------------------------------------------------ #
+    #  PUBLIC: get_invoices
+    # ------------------------------------------------------------------ #
+
     def get_invoices(
         self,
         invoice_type: str = "sold",
@@ -34,272 +32,81 @@ class InvoiceService:
         page: int = 1,
         size: Optional[int] = None,
         sort_by: str = "tdlap:desc",
+        include_pos: Optional[bool] = None,
+        ttxly_filter: Optional[List[int]] = None,
         additional_filters: Optional[Dict[str, Any]] = None,
-        include_processing_status: Optional[List[int]] = None,
-        verbose: bool = True
+        state: str = "",
+        verbose: bool = True,
     ) -> Dict[str, Any]:
         """
-        Lấy danh sách hóa đơn
-        
+        Lấy danh sách hóa đơn theo trang.
+
         Args:
-            invoice_type: "sold" hoặc "purchase"
-            start_date: Ngày bắt đầu (dd/mm/yyyy)
-            end_date: Ngày kết thúc (dd/mm/yyyy)
-            page: Trang (bắt đầu từ 1)
-            size: Số lượng mỗi trang
-            sort_by: Cách sắp xếp
-            additional_filters: Bộ lọc bổ sung
-            include_processing_status: Danh sách trạng thái xử lý để lọc
-                - None (default): Tự động lấy tất cả ttxly phù hợp
-                    + Purchase: gọi /query (5,6) + /sco-query (8)
-                    + Sold: gọi /query (0-7) + /sco-query (8)
-                - [8]: Chỉ lấy máy tính tiền từ /sco-query
-                - [5,6]: Chỉ lấy từ /query
-                - []: Lấy tất cả từ /query (không filter)
-            verbose: Có in log không
-            
+            invoice_type       : "sold" hoặc "purchase"
+            start_date         : Ngày bắt đầu (dd/mm/yyyy), mặc định 30 ngày trước
+            end_date           : Ngày kết thúc (dd/mm/yyyy), mặc định hôm nay
+            page               : Trang (bắt đầu từ 1)
+            size               : Số lượng mỗi trang
+            sort_by            : Cách sắp xếp
+            include_pos        : None  → lấy tất cả (gọi cả /query + /sco-query)
+                                 False → chỉ hóa đơn thường (/query)
+                                 True  → chỉ máy tính tiền (/sco-query)
+            ttxly_filter       : Filter ttxly tùy chỉnh cho /query (dùng để test)
+                                 Ví dụ: [5] hoặc [6] hoặc [5, 6]
+                                 Chỉ có tác dụng khi include_pos=False hoặc None
+            additional_filters : Bộ lọc bổ sung
+            state              : Cursor token cho pagination (lấy từ response trang trước)
+            verbose            : In log hay không
+
         Returns:
-            Dict với keys: success, total, invoices, page, total_pages, has_next, has_prev
+            Dict với keys: success, total, invoices, page, total_pages, has_next, has_prev, state
         """
-        size = size or config.DEFAULT_PAGE_SIZE
-        
-        # Xử lý ngày mặc định
-        if not end_date:
-            end_date = datetime.now().strftime("%d/%m/%Y")
-        
+        size     = size or config.DEFAULT_PAGE_SIZE
+        end_date = end_date or datetime.now().strftime("%d/%m/%Y")
+
         if not start_date:
-            start = datetime.now() - timedelta(days=30)
-            start_date = start.strftime("%d/%m/%Y")
-        
+            start_date = (datetime.now() - timedelta(days=30)).strftime("%d/%m/%Y")
+
         if verbose:
-            print(f"🔍 Đang tìm hóa đơn {invoice_type}...")
+            pos_label = {None: "Tất cả", True: "Chỉ POS", False: "Chỉ thường"}.get(include_pos)
+            print(f"🔍 Hóa đơn {invoice_type} | {pos_label}")
             print(f"📅 Từ {start_date} đến {end_date}")
-            print(f"📄 Trang {page}, mỗi trang {size} hóa đơn\n")
-        
-        # CASE 1: Default behavior - gọi cả 2 endpoint
-        if include_processing_status is None:
-            return self._get_invoices_default(
+            print(f"📄 Trang {page}, mỗi trang {size}\n")
+
+        # CASE 1: Lấy tất cả → gọi cả 2 endpoint rồi merge
+        if include_pos is None:
+            return self._get_all_sources(
                 invoice_type=invoice_type,
                 start_date=start_date,
                 end_date=end_date,
                 page=page,
                 size=size,
                 sort_by=sort_by,
+                ttxly_filter=ttxly_filter,
                 additional_filters=additional_filters,
-                verbose=verbose
+                state=state,
+                verbose=verbose,
             )
-        
-        # CASE 2: Custom request với POS và non-POS
-        pos_statuses, non_pos_statuses = InvoiceConfig.split_statuses(include_processing_status)
-        
-        if pos_statuses and non_pos_statuses:
-            return self._get_invoices_mixed(
-                invoice_type=invoice_type,
-                start_date=start_date,
-                end_date=end_date,
-                page=page,
-                size=size,
-                sort_by=sort_by,
-                pos_statuses=pos_statuses,
-                non_pos_statuses=non_pos_statuses,
-                additional_filters=additional_filters,
-                verbose=verbose
-            )
-        
-        # CASE 3 & 4: Chỉ POS hoặc chỉ non-POS
-        return self._get_invoices_single_endpoint(
+
+        # CASE 2: Chỉ 1 endpoint
+        return self._get_single_source(
             invoice_type=invoice_type,
             start_date=start_date,
             end_date=end_date,
             page=page,
             size=size,
             sort_by=sort_by,
-            include_processing_status=include_processing_status,
-            is_pos_only=bool(pos_statuses),
+            is_pos=include_pos,
+            ttxly_filter=ttxly_filter,
             additional_filters=additional_filters,
-            verbose=verbose
+            state=state,
+            verbose=verbose,
         )
-    
-    def _get_invoices_default(
-        self,
-        invoice_type: str,
-        start_date: str,
-        end_date: str,
-        page: int,
-        size: int,
-        sort_by: str,
-        additional_filters: Optional[Dict[str, Any]],
-        verbose: bool
-    ) -> Dict[str, Any]:
-        """
-        Lấy hóa đơn với cấu hình mặc định (gọi cả 2 endpoint)
-        """
-        # Lấy cấu hình ttxly cho loại hóa đơn
-        status_config = InvoiceConfig.get_default_statuses(invoice_type)
-        non_pos_statuses = status_config["non_pos_statuses"]
-        pos_statuses = status_config["pos_statuses"]
-        status_msg = status_config["status_msg"]
-        
-        if verbose:
-            print(f"ℹ️  Mặc định: Gọi /query (tất cả trừ POS) + /sco-query (ttxly=8)\n")
-        
-        # Bước 1: Gọi /query
-        if verbose:
-            print(f"[1/2] Lấy hóa đơn từ /query (tất cả trừ POS)...")
-        
-        result_normal = self.endpoint_caller.call_endpoint(
-            invoice_type=invoice_type,
-            start_date=start_date,
-            end_date=end_date,
-            page=page,
-            size=size,
-            sort_by=sort_by,
-            endpoint_type="query",
-            include_processing_status=non_pos_statuses,
-            additional_filters=additional_filters,
-            verbose=verbose
-        )
-        
-        # Bước 2: Gọi /sco-query
-        if verbose:
-            print(f"[2/2] Lấy hóa đơn từ /sco-query (ttxly = 8)...")
-        
-        result_pos = self.endpoint_caller.call_endpoint(
-            invoice_type=invoice_type,
-            start_date=start_date,
-            end_date=end_date,
-            page=page,
-            size=size,
-            sort_by=sort_by,
-            endpoint_type="sco-query",
-            include_processing_status=pos_statuses,
-            additional_filters=additional_filters,
-            verbose=verbose
-        )
-        
-        # Merge kết quả
-        return InvoiceResultMerger.merge_results(
-            result_normal=result_normal,
-            result_pos=result_pos,
-            page=page,
-            size=size,
-            verbose=verbose
-        )
-    
-    def _get_invoices_mixed(
-        self,
-        invoice_type: str,
-        start_date: str,
-        end_date: str,
-        page: int,
-        size: int,
-        sort_by: str,
-        pos_statuses: List[int],
-        non_pos_statuses: List[int],
-        additional_filters: Optional[Dict[str, Any]],
-        verbose: bool
-    ) -> Dict[str, Any]:
-        """
-        Lấy hóa đơn có cả POS và non-POS (gọi 2 endpoint)
-        """
-        if verbose:
-            print("🔄 Gọi 2 endpoint: /query + /sco-query\n")
-        
-        # Gọi /query cho non-POS
-        result_normal = self.endpoint_caller.call_endpoint(
-            invoice_type=invoice_type,
-            start_date=start_date,
-            end_date=end_date,
-            page=page,
-            size=size,
-            sort_by=sort_by,
-            endpoint_type="query",
-            include_processing_status=non_pos_statuses,
-            additional_filters=additional_filters,
-            verbose=verbose
-        )
-        
-        # Gọi /sco-query cho POS
-        result_pos = self.endpoint_caller.call_endpoint(
-            invoice_type=invoice_type,
-            start_date=start_date,
-            end_date=end_date,
-            page=page,
-            size=size,
-            sort_by=sort_by,
-            endpoint_type="sco-query",
-            include_processing_status=pos_statuses,
-            additional_filters=additional_filters,
-            verbose=verbose
-        )
-        
-        return InvoiceResultMerger.merge_results(
-            result_normal=result_normal,
-            result_pos=result_pos,
-            page=page,
-            size=size,
-            verbose=verbose
-        )
-    
-    def _get_invoices_single_endpoint(
-        self,
-        invoice_type: str,
-        start_date: str,
-        end_date: str,
-        page: int,
-        size: int,
-        sort_by: str,
-        include_processing_status: List[int],
-        is_pos_only: bool,
-        additional_filters: Optional[Dict[str, Any]],
-        verbose: bool
-    ) -> Dict[str, Any]:
-        """
-        Lấy hóa đơn từ 1 endpoint duy nhất
-        """
-        if is_pos_only:
-            endpoint_type = "sco-query"
-            if verbose:
-                print("🖥️  Chỉ lấy từ máy tính tiền (/sco-query)\n")
-        else:
-            endpoint_type = "query"
-            if verbose:
-                print("📋 Chỉ lấy từ /query\n")
-        
-        result = self.endpoint_caller.call_endpoint(
-            invoice_type=invoice_type,
-            start_date=start_date,
-            end_date=end_date,
-            page=page,
-            size=size,
-            sort_by=sort_by,
-            endpoint_type=endpoint_type,
-            include_processing_status=include_processing_status,
-            additional_filters=additional_filters,
-            verbose=verbose
-        )
-        
-        if not result["success"]:
-            return result
-        
-        # Extract invoices
-        invoices, total = InvoiceResultMerger._extract_invoices(result["data"])
-        total_pages = max(1, (total + size - 1) // size) if total > 0 else 1
-        
-        if verbose:
-            print(f"✅ Thành công!")
-            print(f"📈 Tổng: {total} | Lấy được: {len(invoices)} hóa đơn\n")
-        
-        return {
-            "success": True,
-            "total": total,
-            "invoices": invoices,
-            "page": page,
-            "total_pages": total_pages,
-            "has_next": page < total_pages,
-            "has_prev": page > 1
-        }
-    
+
+    # ------------------------------------------------------------------ #
+    #  PUBLIC: get_invoice_detail
+    # ------------------------------------------------------------------ #
+
     def get_invoice_detail(
         self,
         invoice_summary: Dict[str, Any],
@@ -307,62 +114,51 @@ class InvoiceService:
         verbose: bool = False
     ) -> Dict[str, Any]:
         """
-        Lấy chi tiết hóa đơn
-        
+        Lấy chi tiết 1 hóa đơn.
+
         Args:
-            invoice_summary: Dict hóa đơn tóm tắt
-            invoice_type: "sold" hoặc "purchase"
-            verbose: Có in log không
-            
+            invoice_summary : Dict tóm tắt hóa đơn (cần có nbmst, khhdon, shdon, khmshdon, ttxly)
+            invoice_type    : "sold" hoặc "purchase"
+            verbose         : In log hay không
+
         Returns:
             Dict với keys: success, data
         """
-        nbmst = invoice_summary.get("nbmst")
-        khhdon = invoice_summary.get("khhdon")
-        shdon = invoice_summary.get("shdon")
+        nbmst    = invoice_summary.get("nbmst")
+        khhdon   = invoice_summary.get("khhdon")
+        shdon    = invoice_summary.get("shdon")
         khmshdon = invoice_summary.get("khmshdon")
-        ttxly = invoice_summary.get("ttxly")
-        
+        ttxly    = invoice_summary.get("ttxly")
+
         if not all([nbmst, khhdon, shdon, khmshdon]):
-            return {
-                "success": False,
-                "error": "Missing required parameters"
-            }
-        
-        params = {
-            "nbmst": nbmst,
-            "khhdon": khhdon,
-            "shdon": shdon,
-            "khmshdon": khmshdon
-        }
-        
+            return {"success": False, "error": "Missing required parameters"}
+
+        params   = {"nbmst": nbmst, "khhdon": khhdon, "shdon": shdon, "khmshdon": khmshdon}
+        is_pos   = InvoiceConfig.is_pos_status(ttxly)
+        endpoint = InvoiceConfig.get_endpoint(is_pos=is_pos, path="invoices/detail")
+
         if verbose:
             print(f"  📋 {khhdon}-{shdon}", end=" ")
-        
-        # Chọn endpoint dựa vào ttxly
-        if InvoiceConfig.is_pos_status(ttxly):
-            endpoint_detail = "/sco-query/invoices/detail"
-        else:
-            endpoint_detail = "/query/invoices/detail"
-        
+
         result = self.api_client.get(
-            endpoint=endpoint_detail,
+            endpoint=endpoint,
             params=params,
             invoice_type=invoice_type
         )
-        
+
         if result["success"]:
             if verbose:
                 print("✓")
-            return {
-                "success": True,
-                "data": result["data"]
-            }
+            return {"success": True, "data": result["data"]}
         else:
             if verbose:
                 print("✗")
             return result
-    
+
+    # ------------------------------------------------------------------ #
+    #  PUBLIC: get_all_invoices
+    # ------------------------------------------------------------------ #
+
     def get_all_invoices(
         self,
         invoice_type: str = "sold",
@@ -371,75 +167,96 @@ class InvoiceService:
         size: Optional[int] = None,
         max_pages: Optional[int] = None,
         delay: Optional[float] = None,
-        include_processing_status: Optional[List[int]] = None,
-        verbose: bool = True
+        include_pos: Optional[bool] = None,
+        ttxly_filter: Optional[List[int]] = None,
+        verbose: bool = True,
     ) -> Dict[str, Any]:
         """
-        Lấy TẤT CẢ hóa đơn (tự động phân trang)
-        
-        Args:
-            invoice_type: "sold" hoặc "purchase"
-            start_date: Ngày bắt đầu
-            end_date: Ngày kết thúc
-            size: Số lượng mỗi trang
-            max_pages: Giới hạn số trang
-            delay: Delay giữa requests
-            include_processing_status: Danh sách trạng thái xử lý để lọc 
-            verbose: Có in log không
-            
+        Lấy TẤT CẢ hóa đơn (tự động phân trang).
+
         Returns:
             Dict với keys: success, total, all_invoices, pages_fetched
         """
-        size = size or config.DEFAULT_PAGE_SIZE
+        size  = size or config.DEFAULT_PAGE_SIZE
         delay = delay if delay is not None else config.DEFAULT_DELAY
-        
+
         all_invoices = []
-        page = 1
-        
+        seen_ids     = set()
+        page         = 1
+        state        = ""
+
         while True:
             if verbose:
                 print(f"{'='*60}")
                 print(f"📄 TRANG {page}")
                 print(f"{'='*60}")
-            
+
             result = self.get_invoices(
                 invoice_type=invoice_type,
                 start_date=start_date,
                 end_date=end_date,
                 page=page,
                 size=size,
-                include_processing_status=include_processing_status,
-                verbose=verbose
+                include_pos=include_pos,
+                ttxly_filter=ttxly_filter,
+                state=state,
+                verbose=verbose,
             )
-            
+
             if not result["success"]:
                 return result
-            
-            all_invoices.extend(result["invoices"])
-            
+
+            # Lấy state cursor cho trang tiếp theo
+            state = result.get("state", "")
+
+            # Dedup theo id
+            prev_count = len(all_invoices)
+            for inv in result["invoices"]:
+                inv_id = inv.get("id")
+                if inv_id and inv_id not in seen_ids:
+                    seen_ids.add(inv_id)
+                    all_invoices.append(inv)
+
+            if verbose:
+                print(f"📦 Đã lấy: {len(all_invoices)}/{result['total']} hóa đơn\n")
+
+            # Dừng nếu API trả lặp (không có hóa đơn mới)
+            if len(all_invoices) == prev_count:
+                if verbose:
+                    print(f"⚠️  API trả dữ liệu lặp, dừng sớm tại trang {page}\n")
+                break
+
+            # Dừng nếu đã đủ tổng từ server
+            if len(all_invoices) >= result["total"]:
+                break
+
             if not result.get("has_next"):
                 break
-            
+
             if max_pages and page >= max_pages:
                 if verbose:
                     print(f"⚠️  Đạt giới hạn {max_pages} trang\n")
                 break
-            
+
             page += 1
-            
+
             if delay > 0:
                 time.sleep(delay)
-        
+
         if verbose:
             print(f"\n🎉 Hoàn thành! Lấy được {len(all_invoices)} hóa đơn\n")
-        
+
         return {
-            "success": True,
-            "total": len(all_invoices),
-            "all_invoices": all_invoices,
-            "pages_fetched": page
+            "success":       True,
+            "total":         len(all_invoices),
+            "all_invoices":  all_invoices,
+            "pages_fetched": page,
         }
-    
+
+    # ------------------------------------------------------------------ #
+    #  PUBLIC: get_all_invoices_with_details
+    # ------------------------------------------------------------------ #
+
     def get_all_invoices_with_details(
         self,
         invoice_type: str = "sold",
@@ -448,30 +265,20 @@ class InvoiceService:
         size: Optional[int] = None,
         max_pages: Optional[int] = None,
         delay: Optional[float] = None,
-        verbose: bool = True,
-        include_processing_status: Optional[List[int]] = None,
-        return_models: bool = False
+        include_pos: Optional[bool] = None,
+        ttxly_filter: Optional[List[int]] = None,
+        return_models: bool = False,
+        verbose: bool = True
     ) -> Dict[str, Any]:
         """
-        Lấy TẤT CẢ hóa đơn KÈM CHI TIẾT
-        
-        Args:
-            invoice_type: "sold" hoặc "purchase"
-            start_date: Ngày bắt đầu
-            end_date: Ngày kết thúc
-            size: Số lượng mỗi trang
-            max_pages: Giới hạn số trang
-            delay: Delay giữa requests
-            verbose: Có in log không
-            include_processing_status: Danh sách trạng thái xử lý để lọc
-            return_models: Trả về Invoice objects thay vì dict
-            
+        Lấy TẤT CẢ hóa đơn KÈM CHI TIẾT.
+
         Returns:
             Dict với keys: success, all_invoices_with_details, summary
         """
         delay = delay if delay is not None else config.DEFAULT_DELAY
-        
-        # Bước 1: Lấy tất cả hóa đơn tóm tắt
+
+        # Bước 1: Lấy toàn bộ danh sách tóm tắt
         result = self.get_all_invoices(
             invoice_type=invoice_type,
             start_date=start_date,
@@ -479,64 +286,157 @@ class InvoiceService:
             size=size,
             max_pages=max_pages,
             delay=delay,
-            include_processing_status=include_processing_status,
-            verbose=verbose
+            include_pos=include_pos,
+            ttxly_filter=ttxly_filter,
+            verbose=verbose,
         )
-        
+
         if not result["success"]:
             return result
-        
+
         invoices_summary = result["all_invoices"]
-        
+
         if verbose:
             print(f"\n{'='*60}")
             print(f"📦 LẤY CHI TIẾT {len(invoices_summary)} HÓA ĐƠN")
             print(f"{'='*60}\n")
-        
-        # Bước 2: Lấy chi tiết
+
+        # Bước 2: Lấy chi tiết từng hóa đơn
         invoices_with_details = []
-        success_count = 0
-        failed_count = 0
-        
+        success_count         = 0
+        failed_count          = 0
+
         for idx, inv_summary in enumerate(invoices_summary, 1):
             if verbose:
                 print(f"[{idx}/{len(invoices_summary)}]", end=" ")
-            
+
             detail_result = self.get_invoice_detail(
                 invoice_summary=inv_summary,
                 invoice_type=invoice_type,
-                verbose=verbose
+                verbose=verbose,
             )
-            
+
             if detail_result["success"]:
                 invoice_data = detail_result["data"]
-                
                 if return_models:
-                    # Chuyển thành Invoice object
                     invoice_data = Invoice.from_dict(invoice_data)
-                
                 invoices_with_details.append(invoice_data)
                 success_count += 1
             else:
                 failed_count += 1
-            
+
             if delay > 0 and idx < len(invoices_summary):
                 time.sleep(delay)
-        
+
         if verbose:
             print(f"\n{'='*60}")
             print(f"✅ Hoàn thành!")
-            print(f"   • Thành công: {success_count}")
-            print(f"   • Thất bại: {failed_count}")
+            print(f"   • Thành công : {success_count}")
+            print(f"   • Thất bại   : {failed_count}")
             print(f"{'='*60}\n")
-        
+
         return {
             "success": True,
             "all_invoices_with_details": invoices_with_details,
             "summary": {
-                "total_invoices": len(invoices_summary),
+                "total_invoices":  len(invoices_summary),
                 "details_success": success_count,
-                "details_failed": failed_count,
-                "pages_fetched": result["pages_fetched"]
-            }
+                "details_failed":  failed_count,
+                "pages_fetched":   result["pages_fetched"],
+            },
         }
+
+    # ------------------------------------------------------------------ #
+    #  PRIVATE
+    # ------------------------------------------------------------------ #
+
+    def _get_all_sources(
+        self,
+        invoice_type: str,
+        start_date: str,
+        end_date: str,
+        page: int,
+        size: int,
+        sort_by: str,
+        ttxly_filter: Optional[List[int]],
+        additional_filters: Optional[Dict[str, Any]],
+        state: str,
+        verbose: bool,
+    ) -> Dict[str, Any]:
+        """Gọi cả /query và /sco-query rồi merge."""
+        if verbose:
+            print("[1/2] Lấy hóa đơn thường từ /query...")
+
+        result_normal = self.endpoint_caller.call_endpoint(
+            invoice_type=invoice_type,
+            start_date=start_date,
+            end_date=end_date,
+            page=page,
+            size=size,
+            sort_by=sort_by,
+            is_pos=False,
+            ttxly_filter=ttxly_filter,
+            additional_filters=additional_filters,
+            state=state,
+            verbose=verbose,
+        )
+
+        if verbose:
+            print("[2/2] Lấy máy tính tiền từ /sco-query...")
+
+        result_pos = self.endpoint_caller.call_endpoint(
+            invoice_type=invoice_type,
+            start_date=start_date,
+            end_date=end_date,
+            page=page,
+            size=size,
+            sort_by=sort_by,
+            is_pos=True,
+            additional_filters=additional_filters,
+            state=state,
+            verbose=verbose,
+        )
+
+        return InvoiceResultMerger.merge_results(
+            result_normal=result_normal,
+            result_pos=result_pos,
+            page=page,
+            size=size,
+            verbose=verbose,
+        )
+
+    def _get_single_source(
+        self,
+        invoice_type: str,
+        start_date: str,
+        end_date: str,
+        page: int,
+        size: int,
+        sort_by: str,
+        is_pos: bool,
+        ttxly_filter: Optional[List[int]],
+        additional_filters: Optional[Dict[str, Any]],
+        state: str,
+        verbose: bool,
+    ) -> Dict[str, Any]:
+        """Gọi 1 endpoint duy nhất."""
+        result = self.endpoint_caller.call_endpoint(
+            invoice_type=invoice_type,
+            start_date=start_date,
+            end_date=end_date,
+            page=page,
+            size=size,
+            sort_by=sort_by,
+            is_pos=is_pos,
+            ttxly_filter=ttxly_filter,
+            additional_filters=additional_filters,
+            state=state,
+            verbose=verbose,
+        )
+
+        return InvoiceResultMerger.build_single_result(
+            result=result,
+            page=page,
+            size=size,
+            verbose=verbose,
+        )

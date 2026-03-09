@@ -124,7 +124,7 @@ class FileHandler:
             invoices=data,
             selected_columns=selected_columns,
             use_vietnamese_names=(column_names is not None),
-            flatten=True
+            flatten=False,
         )
         
         # Rename columns nếu được chỉ định (override mapping)

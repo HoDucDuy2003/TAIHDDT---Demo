@@ -1,0 +1,33 @@
+Mua vào :
+HDMV(purchase):
+is_pos = true => kéo đủ
+is_pos = false, ttxly_filter = 5 => đủ
+is_pos = false , ttxly_filter = 6 => đủ
+
+is_pos = false => kéo thiếu => tôi đoán nguyên nhân là do bị giới hạn bởi size nên mới bị thiếu 
+vì sau cùng mình lấy cả details
+
+ Nhưng cả 2 đều không bị duplicate 
+ => function merge đang có vấn đề 
+
+
+
+ sau một hồi test thì nhận ra nguyên nhân sai từ gốc file json:
+ result_p1 = service.get_invoices(
+        invoice_type=INVOICE_TYPE,
+        start_date = START_DATE,
+        end_date = END_DATE,
+        include_pos=False,
+        page=1,
+        size=50) => ra file json ổn 
+result_p2 = service.get_invoices(
+        invoice_type=INVOICE_TYPE,
+        start_date = START_DATE,
+        end_date = END_DATE,
+        include_pos=False,
+        page=2,
+        size=50) => vẫn là file json 1 chỉ là ở cuối là page 2 @@
+
+- đã fix được lí do duplicate : thiếu trường state trả về nên khi API trả về nó thiếu state nên auto bị trả về trang 1
+nhưng chạy chi tiết hiện tại chưa flatten được chi tiết
+ 

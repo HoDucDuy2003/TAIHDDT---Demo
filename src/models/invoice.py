@@ -105,7 +105,6 @@ class InvoiceItem:
         value_notax = float(data.get('thtien') or 0)
         
         # Tính tiền thuế = thành tiền × thuế suất
-        value_tax = value_notax * tax_rate
         return cls(
             stt=data.get('stt'),
             name=data.get('ten') or 'N/A',
@@ -116,7 +115,7 @@ class InvoiceItem:
             discount=data.get('tlckhau'),
             type_tax_rate = data.get('ltsuat') or "",
             tax_rate = tax_rate,
-            value_tax=value_tax
+            value_tax=data.get('tthue') or 0
         )
 
 
