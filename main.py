@@ -43,7 +43,7 @@ def main():
         start_date=START_DATE,
         end_date=END_DATE,
         size=50,
-        include_pos=True,
+        include_pos=False,
         return_models=True  # Trả về Invoice objects
     )
 
@@ -74,7 +74,8 @@ def main():
             start_date=START_DATE,
             end_date=END_DATE,
             selected_columns=DataFormatter.DEFAULT_EXPORT_COLUMNS,
-            column_names=DataFormatter.VIETNAMESE_COLUMN_NAMES
+            column_names=DataFormatter.VIETNAMESE_COLUMN_NAMES,
+            flatten=True
         )
         print(f"\n✅ HOÀN THÀNH!")
         print(f"📁 JSON: {json_file}")

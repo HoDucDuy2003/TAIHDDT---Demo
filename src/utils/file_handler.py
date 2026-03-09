@@ -92,7 +92,8 @@ class FileHandler:
         invoice_type: str = "sold",
         folder: str = "data",
         selected_columns: Optional[list[str]] = None, # Các trường chỉ định (áp dụng sau flatten)
-        column_names=None  
+        column_names=None,
+        flatten: bool = True
     ) -> str:
         """
         Lưu dữ liệu vào file Excel = convert từ json gốc
@@ -124,7 +125,7 @@ class FileHandler:
             invoices=data,
             selected_columns=selected_columns,
             use_vietnamese_names=(column_names is not None),
-            flatten=False,
+            flatten=flatten,
         )
         
         # Rename columns nếu được chỉ định (override mapping)
