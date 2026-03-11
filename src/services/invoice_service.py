@@ -36,6 +36,8 @@ class InvoiceService:
         ttxly_filter: Optional[List[int]] = None,
         additional_filters: Optional[Dict[str, Any]] = None,
         state: str = "",
+        state_normal: str = "",
+        state_pos: str = "",
         verbose: bool = True,
     ) -> Dict[str, Any]:
         """
@@ -84,7 +86,8 @@ class InvoiceService:
                 sort_by=sort_by,
                 ttxly_filter=ttxly_filter,
                 additional_filters=additional_filters,
-                state=state,
+                state_normal=state_normal,
+                state_pos=state_pos,
                 verbose=verbose,
             )
 
@@ -180,10 +183,12 @@ class InvoiceService:
         size  = size or config.DEFAULT_PAGE_SIZE
         delay = delay if delay is not None else config.DEFAULT_DELAY
 
-        all_invoices = []
-        seen_ids     = set()
-        page         = 1
-        state        = ""
+        all_invoices  = []
+        seen_ids      = set()
+        page          = 1
+        state         = ""   # dùng cho _get_single_source
+        state_normal  = ""   # dùng cho /query trong _get_all_sources
+        state_pos     = ""   # dùng cho /sco-query trong _get_all_sources
 
         while True:
             if verbose:
@@ -200,6 +205,8 @@ class InvoiceService:
                 include_pos=include_pos,
                 ttxly_filter=ttxly_filter,
                 state=state,
+                state_normal=state_normal,
+                state_pos=state_pos,
                 verbose=verbose,
             )
 
@@ -207,7 +214,9 @@ class InvoiceService:
                 return result
 
             # Lấy state cursor cho trang tiếp theo
-            state = result.get("state", "")
+            state        = result.get("state", "")
+            state_normal = result.get("state_normal", "")
+            state_pos    = result.get("state_pos", "")
 
             # Dedup theo id
             prev_count = len(all_invoices)
@@ -360,7 +369,8 @@ class InvoiceService:
         sort_by: str,
         ttxly_filter: Optional[List[int]],
         additional_filters: Optional[Dict[str, Any]],
-        state: str,
+        state_normal: str,
+        state_pos: str,
         verbose: bool,
     ) -> Dict[str, Any]:
         """Gọi cả /query và /sco-query rồi merge."""
@@ -377,7 +387,7 @@ class InvoiceService:
             is_pos=False,
             ttxly_filter=ttxly_filter,
             additional_filters=additional_filters,
-            state=state,
+            state=state_normal,
             verbose=verbose,
         )
 
@@ -393,17 +403,24 @@ class InvoiceService:
             sort_by=sort_by,
             is_pos=True,
             additional_filters=additional_filters,
-            state=state,
+            state=state_pos,
             verbose=verbose,
         )
 
-        return InvoiceResultMerger.merge_results(
+        merged = InvoiceResultMerger.merge_results(
             result_normal=result_normal,
             result_pos=result_pos,
             page=page,
             size=size,
             verbose=verbose,
         )
+
+        states = InvoiceResultMerger.extract_states(
+            result_normal=result_normal,
+            result_pos=result_pos,
+        )
+
+        return {**merged, **states}
 
     def _get_single_source(
         self,

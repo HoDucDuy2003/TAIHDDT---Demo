@@ -59,13 +59,7 @@ class AuthManager:
             "Origin": config.DOMAIN,
             "Referer": f"{config.DOMAIN}/login",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-        }
-        
-        print("🔐 Đang đăng nhập...")
-        print(f"   Username: {username}")
-        print(f"   Captcha: {captcha_value}")
-        print(f"   Captcha Key: {captcha_key}")
-        
+        }  
         try:
             response = self.session.post(
                 login_url,

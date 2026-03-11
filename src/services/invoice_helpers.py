@@ -111,23 +111,18 @@ class InvoiceResultMerger:
     ) -> Dict[str, Any]:
         """
         Merge kết quả từ /query và /sco-query.
-
-        Args:
-            result_normal : Kết quả từ /query
-            result_pos    : Kết quả từ /sco-query
-            page          : Trang hiện tại
-            size          : Kích thước trang
-            verbose       : In log hay không
-
+        Chỉ lo data + phân trang, không trả state.
+    
         Returns:
             Dict với keys: success, total, invoices, page, total_pages, has_next, has_prev
         """
         all_invoices = []
         grand_total = 0
-        state_normal = ""
+
+
         # Xử lý kết quả /query
         if result_normal["success"]:
-            invoices_normal, total_normal,state_normal = InvoiceResultMerger._extract_invoices(result_normal["data"])
+            invoices_normal, total_normal, _ = InvoiceResultMerger._extract_invoices(result_normal["data"])
             all_invoices.extend(invoices_normal)
             grand_total += total_normal
             if verbose:
@@ -141,7 +136,7 @@ class InvoiceResultMerger:
         
         # Xử lý kết quả /sco-query
         if result_pos["success"]:
-            invoices_pos, total_pos , state_pos = InvoiceResultMerger._extract_invoices(result_pos["data"])
+            invoices_pos, total_pos , _ = InvoiceResultMerger._extract_invoices(result_pos["data"])
             all_invoices.extend(invoices_pos)
             grand_total += total_pos
             if verbose:
@@ -165,7 +160,6 @@ class InvoiceResultMerger:
             "total":       grand_total,
             "invoices":    all_invoices,
             "page":        page,
-            "state" : state_normal,
             "total_pages": total_pages,
             "has_next":    has_next,
             "has_prev":    page > 1,
@@ -214,6 +208,33 @@ class InvoiceResultMerger:
             "has_prev":    page > 1,
         }
 
+
+    # Extract
+    @staticmethod
+    def extract_states(
+        result_normal: Dict[str, Any],
+        result_pos: Dict[str, Any],
+    ) -> Dict[str, str]:
+        """
+        Extract cursor state từ 2 endpoint riêng biệt.
+        Tách khỏi merge_results để mỗi hàm chỉ làm 1 việc.
+
+        Returns:
+            Dict với keys: state_normal, state_pos
+        """
+        state_normal = ""
+        state_pos    = ""
+
+        if result_normal.get("success") and result_normal.get("data"):
+            _, _, state_normal = InvoiceResultMerger._extract_invoices(result_normal["data"])
+
+        if result_pos.get("success") and result_pos.get("data"):
+            _, _, state_pos = InvoiceResultMerger._extract_invoices(result_pos["data"])
+
+        return {
+            "state_normal": state_normal,
+            "state_pos":    state_pos,
+        }
     @staticmethod
     def _extract_invoices(data: Any) -> tuple:
         """

@@ -34,8 +34,8 @@ def main():
     # ========== LẤY HÓA ĐƠN KÈM CHI TIẾT ==========
     logger.info("Bắt đầu lấy hóa đơn...")
     
-    START_DATE = "01/01/2026"
-    END_DATE = "31/01/2026"
+    START_DATE = "01/02/2026"
+    END_DATE = "28/02/2026"
     INVOICE_TYPE = "purchase"
 
     result = service.get_all_invoices_with_details(
@@ -43,7 +43,6 @@ def main():
         start_date=START_DATE,
         end_date=END_DATE,
         size=50,
-        include_pos=False,
         return_models=True  # Trả về Invoice objects
     )
 

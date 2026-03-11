@@ -716,6 +716,7 @@ class InvoiceApp:
                     end_date=end_date,
                     selected_columns=DataFormatter.DEFAULT_EXPORT_COLUMNS,
                     column_names=DataFormatter.VIETNAMESE_COLUMN_NAMES,
+                    flatten=True,
                 )
 
                 self._log("\n✅ HOÀN THÀNH!\n", "success")
