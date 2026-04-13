@@ -84,6 +84,8 @@ class ProcessingStatus(Enum):
 class InvoiceItem:
     """Model cho một hàng hóa trong hóa đơn"""
     
+
+    id_detail: str # ID chi tiết (nếu có)
     stt : int  # Số thứ tự
     name: str  # Tên hàng hóa
     quantity: float  # Số lượng
@@ -106,6 +108,7 @@ class InvoiceItem:
         
         # Tính tiền thuế = thành tiền × thuế suất
         return cls(
+            id_detail = data.get('id'),
             stt=data.get('stt'),
             name=data.get('ten') or 'N/A',
             quantity=float(data.get('sluong') or 0),
@@ -124,11 +127,12 @@ class Invoice:
     """Model cho hóa đơn điện tử"""
     
     # Thông tin cơ bản
+    invoice_id :str # ID hóa đơn (ID từ hệ thống)
     invoice_template: str  #Mẫu số hóa đơn
     invoice_serial: str  # Ký hiệu hóa đơn
     invoice_number: str  # Số hóa đơn
     invoice_date: str  # Ngày lập
-    lookup_code: Optional[str] = None  # Mã tra cứu
+    lookup_code: Optional[str] = None  # Mã do CQT cấp
     invoice_currency: Optional[str] = None  # Đơn vị tiền tệ
     
     # Người bán
@@ -180,9 +184,10 @@ class Invoice:
         
         return cls(
             # Thông tin cơ bản
-            invoice_template=data.get('khmshdon') or '',
-            invoice_serial=data.get('khhdon') or '',
-            invoice_number=data.get('shdon') or '',
+            invoice_id = data.get('id'),
+            invoice_template=data.get('khmshdon'),
+            invoice_serial=data.get('khhdon'),
+            invoice_number=data.get('shdon'),
             invoice_date=data.get('ntao') or '',
             lookup_code=data.get('mhdon'),
             invoice_currency = data.get('dvtte'),
@@ -225,6 +230,7 @@ class Invoice:
     def to_dict(self) -> Dict[str, Any]:
         """Chuyển Invoice thành dict"""
         return {
+            'invoice_id': self.invoice_id,
             'invoice_template': self.invoice_template,
             'invoice_serial': self.invoice_serial,
             'invoice_number': self.invoice_number,
@@ -244,6 +250,7 @@ class Invoice:
             'total_amount': self.total_amount,
             'items': [
                 {
+                    'id_detail': item.id_detail,
                     'stt': item.stt,
                     'name': item.name,
                     'quantity': item.quantity,

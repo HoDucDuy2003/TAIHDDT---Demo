@@ -90,6 +90,7 @@ class FileHandler:
         start_date: str = "",
         end_date: str = "",
         invoice_type: str = "sold",
+        mst: str = "",
         folder: str = "data",
         selected_columns: Optional[list[str]] = None, # Các trường chỉ định (áp dụng sau flatten)
         column_names=None,
@@ -114,7 +115,8 @@ class FileHandler:
             end_date = end_date.replace("/","")
             folder_path = f"{folder}/{invoice_type}"
             os.makedirs(folder_path, exist_ok=True)
-            filename = f"{folder_path}/invoices_{invoice_type}_{start_date}_{end_date}.xlsx"
+            mst_part = f"{mst}" if mst else ""
+            filename = f"{folder_path}/{mst_part}_invoices_{invoice_type}_{start_date}_{end_date}.xlsx"
         else:
             folder_path = os.path.dirname(filename)
             if folder_path:
@@ -135,6 +137,62 @@ class FileHandler:
         # Tạo DataFrame và lưu Excel
         df = pd.DataFrame(formatted_data)
         df.to_excel(filename, index=False, engine='openpyxl')
-        
+
         print(f"💾 Đã lưu vào Excel: {filename}")
+        return filename
+
+    @staticmethod
+    def save_to_csv(
+        data: list[dict],
+        filename: Optional[str] = None,
+        start_date: str = "",
+        end_date: str = "",
+        invoice_type: str = "sold",
+        mst: str = "",
+        folder: str = "data",
+        selected_columns: Optional[list[str]] = None,
+        column_names=None,
+        flatten: bool = True
+    ) -> str:
+        """
+        Lưu dữ liệu vào file CSV
+
+        Args:
+            data: List of dicts (danh sách hóa đơn với details)
+            filename: Tên file (tự động nếu None)
+            invoice_type: Loại hóa đơn
+            mst: Mã số thuế
+            folder: Thư mục gốc
+            selected_columns: List các trường muốn giữ (nếu None, giữ hết)
+            column_names: Dict để rename columns
+
+        Returns:
+            Đường dẫn file đã lưu
+        """
+        if not filename:
+            start_date = start_date.replace("/", "")
+            end_date = end_date.replace("/", "")
+            folder_path = f"{folder}/{invoice_type}"
+            os.makedirs(folder_path, exist_ok=True)
+            mst_part = f"{mst}" if mst else ""
+            filename = f"{folder_path}/{mst_part}_invoices_{invoice_type}_{start_date}_{end_date}.csv"
+        else:
+            folder_path = os.path.dirname(filename)
+            if folder_path:
+                os.makedirs(folder_path, exist_ok=True)
+
+        formatted_data = DataFormatter.transform_for_export(
+            invoices=data,
+            selected_columns=selected_columns,
+            use_vietnamese_names=(column_names is not None),
+            flatten=flatten,
+        )
+
+        if column_names:
+            formatted_data = DataFormatter.rename_columns(formatted_data, column_names)
+
+        df = pd.DataFrame(formatted_data)
+        df.to_csv(filename, index=False, encoding="utf-8-sig")
+
+        print(f"💾 Đã lưu vào CSV: {filename}")
         return filename

@@ -1,6 +1,8 @@
 # Token files
 token.json
 
+captcha.svg
+
 #Logs directory
 logs/
 

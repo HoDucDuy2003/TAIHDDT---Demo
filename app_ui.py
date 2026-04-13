@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 
 from src.core import config,AuthManager
 from src.services import InvoiceService
+from src.models import Invoice
 from src.utils import DataFormatter, FileHandler
 
 
@@ -286,7 +287,7 @@ class LoginWindow:
         if result["success"]:
             config.TOKEN = result["token"]
             self.auth.update_config_file()
-            self.root.after(0, lambda: self.on_success(result["token"]))
+            self.root.after(0, lambda: self.on_success(result["token"], username))
         else:
             msg = result.get("message", result.get("error", "Lỗi không xác định"))
             self.root.after(0, lambda: self._on_login_failed(msg))
@@ -301,9 +302,10 @@ class LoginWindow:
 # MÀN HÌNH CHÍNH
 # ══════════════════════════════════════════════════════════
 class InvoiceApp:
-    def __init__(self, root: tk.Tk):
+    def __init__(self, root: tk.Tk, mst: str = ""):
         self.root = root
-        self.root.title("🏦 Hệ thống Hóa đơn Điện tử v2.0")
+        self.mst = mst
+        self.root.title(f"🏦 Hệ thống Hóa đơn Điện tử v2.0 - {self.mst}")
         self.root.geometry("900x650")
         self.root.resizable(True, True)
         self.root.configure(bg="#f0f4f8")
@@ -479,6 +481,50 @@ class InvoiceApp:
         self.type_combo.pack(fill=tk.X, ipady=5)
         self.type_combo["values"] = ["purchase  —  Mua vào", "sold  —  Bán ra"]
         self.type_combo.set("purchase  —  Mua vào")
+
+        # --- Fetch mode checkbox ---
+        self._form_label(card, "📦  Chế độ tải", row=6, col=0)
+
+        mode_frame = tk.Frame(card, bg=self.colors["card"])
+        mode_frame.grid(row=7, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 8))
+
+        self.fetch_detail_var = tk.BooleanVar(value=True)
+        tk.Checkbutton(
+            mode_frame,
+            text="Lấy chi tiết hóa đơn (hàng hóa, đơn giá, số lượng...)",
+            variable=self.fetch_detail_var,
+            font=("Segoe UI", 10),
+            bg=self.colors["card"],
+            fg=self.colors["text"],
+            activebackground=self.colors["card"],
+            selectcolor="white",
+            cursor="hand2",
+        ).pack(side=tk.LEFT)
+
+        # --- Export format checkboxes ---
+        self._form_label(card, "💾  Định dạng xuất", row=8, col=0)
+
+        fmt_frame = tk.Frame(card, bg=self.colors["card"])
+        fmt_frame.grid(row=9, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 16))
+
+        self.export_json_var = tk.BooleanVar(value=True)
+        self.export_excel_var = tk.BooleanVar(value=True)
+        self.export_csv_var = tk.BooleanVar(value=False)
+
+        for text, var in [("JSON", self.export_json_var),
+                          ("Excel", self.export_excel_var),
+                          ("CSV", self.export_csv_var)]:
+            tk.Checkbutton(
+                fmt_frame,
+                text=text,
+                variable=var,
+                font=("Segoe UI", 10),
+                bg=self.colors["card"],
+                fg=self.colors["text"],
+                activebackground=self.colors["card"],
+                selectcolor="white",
+                cursor="hand2",
+            ).pack(side=tk.LEFT, padx=(0, 16))
 
     def _form_label(self, parent, text, row, col):
         padx = (16, 8) if col == 0 else (8, 8)
@@ -687,18 +733,34 @@ class InvoiceApp:
 
             service      = InvoiceService()
             file_handler = FileHandler()
+            fetch_detail = self.fetch_detail_var.get()
 
-            result = service.get_all_invoices_with_details(
-                invoice_type=invoice_type,
-                start_date=start_date,
-                end_date=end_date,
-                size=50,
-                return_models=True,
-            )
+            if fetch_detail:
+                self._log("📦 Chế độ: Lấy chi tiết hóa đơn\n\n", "info")
+                result = service.get_all_invoices_with_details(
+                    invoice_type=invoice_type,
+                    start_date=start_date,
+                    end_date=end_date,
+                    size=50,
+                    return_models=True,
+                )
+            else:
+                self._log("📦 Chế độ: Chỉ lấy danh sách (header)\n\n", "info")
+                result = service.get_all_invoices(
+                    invoice_type=invoice_type,
+                    start_date=start_date,
+                    end_date=end_date,
+                    size=50,
+                )
 
             if result.get("success"):
-                invoices = result["all_invoices_with_details"]
-                summary  = result.get("summary", {})
+                if fetch_detail:
+                    invoices = result["all_invoices_with_details"]
+                    summary  = result.get("summary", {})
+                else:
+                    invoices = [Invoice.from_dict(inv) for inv in result["all_invoices"]]
+                    summary  = {"total_invoices": result["total"], "pages_fetched": result["pages_fetched"]}
+                invoice_dicts = [inv.to_dict() for inv in invoices]
 
                 self._log("\n📊 TỔNG KẾT:\n", "success")
                 self._log(f"   • Tổng hóa đơn   : {summary.get('total_invoices', len(invoices))}\n", "success")
@@ -708,21 +770,37 @@ class InvoiceApp:
                     self._log(f"   • Chi tiết lỗi   : {summary['details_failed']}\n", "warn")
 
                 self._log(f"\n💾 Đang lưu {len(invoices)} hóa đơn...\n", "info")
-                json_file  = file_handler.save_to_json(invoices, invoice_type=invoice_type)
-                excel_file = file_handler.save_to_excel(
-                    [inv.to_dict() for inv in invoices],
+                export_columns = DataFormatter.DEFAULT_EXPORT_COLUMNS if fetch_detail else DataFormatter.HEADER_EXPORT_COLUMNS
+                export_common = dict(
                     invoice_type=invoice_type,
                     start_date=start_date,
                     end_date=end_date,
-                    selected_columns=DataFormatter.DEFAULT_EXPORT_COLUMNS,
+                    mst=self.mst,
+                    selected_columns=export_columns,
                     column_names=DataFormatter.VIETNAMESE_COLUMN_NAMES,
-                    flatten=True,
+                    flatten=fetch_detail,
                 )
+                saved_files = []
+
+                if self.export_json_var.get():
+                    json_file = file_handler.save_to_json(invoices, invoice_type=invoice_type)
+                    saved_files.append(("JSON", json_file))
+
+                if self.export_excel_var.get():
+                    excel_file = file_handler.save_to_excel(invoice_dicts, **export_common)
+                    saved_files.append(("EXCEL", excel_file))
+
+                if self.export_csv_var.get():
+                    csv_file = file_handler.save_to_csv(invoice_dicts, **export_common)
+                    saved_files.append(("CSV", csv_file))
 
                 self._log("\n✅ HOÀN THÀNH!\n", "success")
-                self._log(f"   📁 JSON : {json_file}\n", "success")
-                self._log(f"   📁 EXCEL: {excel_file}\n", "success")
-                self._set_status(f"✅ Hoàn thành — {len(invoices)} hóa đơn | {os.path.basename(excel_file)}")
+                for fmt, path in saved_files:
+                    self._log(f"   📁 {fmt:<5}: {path}\n", "success")
+                if saved_files:
+                    self._set_status(f"✅ Hoàn thành — {len(invoices)} hóa đơn | {os.path.basename(saved_files[-1][1])}")
+                else:
+                    self._set_status(f"✅ Hoàn thành — {len(invoices)} hóa đơn (không xuất file)")
 
             else:
                 err = result.get("error", "Unknown")
@@ -749,10 +827,10 @@ def show_login(root: tk.Tk):
     for widget in root.winfo_children():
         widget.destroy()
 
-    def on_success(token: str):
+    def on_success(token: str, mst: str = ""):
         for widget in root.winfo_children():
             widget.destroy()
         root.deiconify()
-        InvoiceApp(root)
+        InvoiceApp(root, mst=mst)
 
     LoginWindow(root, on_success=on_success)
