@@ -11,7 +11,7 @@ import os
 from datetime import datetime, timedelta
 
 from src.core import config,AuthManager
-from src.services import InvoiceService
+from src.services import InvoiceService, GCSService, BigQueryService
 from src.models import Invoice
 from src.utils import DataFormatter, FileHandler
 
@@ -526,6 +526,25 @@ class InvoiceApp:
                 cursor="hand2",
             ).pack(side=tk.LEFT, padx=(0, 16))
 
+        # --- Cloud upload checkbox ---
+        self._form_label(card, "☁️  Cloud Upload", row=10, col=0)
+
+        cloud_frame = tk.Frame(card, bg=self.colors["card"])
+        cloud_frame.grid(row=11, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 16))
+
+        self.upload_gcs_var = tk.BooleanVar(value=False)
+        tk.Checkbutton(
+            cloud_frame,
+            text="Upload to GCS → BigQuery",
+            variable=self.upload_gcs_var,
+            font=("Segoe UI", 10),
+            bg=self.colors["card"],
+            fg=self.colors["text"],
+            activebackground=self.colors["card"],
+            selectcolor="white",
+            cursor="hand2",
+        ).pack(side=tk.LEFT)
+
     def _form_label(self, parent, text, row, col):
         padx = (16, 8) if col == 0 else (8, 8)
         tk.Label(
@@ -761,6 +780,8 @@ class InvoiceApp:
                     invoices = [Invoice.from_dict(inv) for inv in result["all_invoices"]]
                     summary  = {"total_invoices": result["total"], "pages_fetched": result["pages_fetched"]}
                 invoice_dicts = [inv.to_dict() for inv in invoices]
+                for inv_dict in invoice_dicts:
+                    inv_dict["invoice_type"] = invoice_type
 
                 self._log("\n📊 TỔNG KẾT:\n", "success")
                 self._log(f"   • Tổng hóa đơn   : {summary.get('total_invoices', len(invoices))}\n", "success")
@@ -793,6 +814,40 @@ class InvoiceApp:
                 if self.export_csv_var.get():
                     csv_file = file_handler.save_to_csv(invoice_dicts, **export_common)
                     saved_files.append(("CSV", csv_file))
+
+                # --- Cloud Upload ---
+                if self.upload_gcs_var.get():
+                    self._log("\n☁️  Đang upload lên Cloud...\n", "info")
+                    try:
+                        gcs = GCSService()
+                        bq = BigQueryService()
+
+                        gcs_result = gcs.upload_invoices(
+                            invoice_dicts=invoice_dicts,
+                            mst=self.mst,
+                            invoice_type=invoice_type,
+                            start_date=start_date,
+                            end_date=end_date,
+                        )
+
+                        self._log(f"   ☁️  GCS header : {gcs_result['header_uri']}\n", "success")
+                        if gcs_result.get("detail_uri"):
+                            self._log(f"   ☁️  GCS detail : {gcs_result['detail_uri']}\n", "success")
+
+                        self._log("\n📊 Đang load vào BigQuery...\n", "info")
+                        bq_result = bq.load_invoices_from_gcs(
+                            header_uri=gcs_result["header_uri"],
+                            detail_uri=gcs_result.get("detail_uri", ""),
+                        )
+
+                        for table, rows in bq_result.items():
+                            self._log(f"   📊 {table}: +{rows} rows\n", "success")
+
+                    except Exception as cloud_err:
+                        import traceback
+                        self._log(f"\n⚠️  Cloud upload lỗi: {cloud_err}\n", "warn")
+                        self._log(f"   {traceback.format_exc()}\n", "warn")
+                        self._log("   (Dữ liệu local vẫn đã được lưu)\n", "info")
 
                 self._log("\n✅ HOÀN THÀNH!\n", "success")
                 for fmt, path in saved_files:

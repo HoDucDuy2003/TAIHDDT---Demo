@@ -188,7 +188,7 @@ class Invoice:
             invoice_template=data.get('khmshdon'),
             invoice_serial=data.get('khhdon'),
             invoice_number=data.get('shdon'),
-            invoice_date=data.get('ntao') or '',
+            invoice_date=data.get('tdlap') or '',
             lookup_code=data.get('mhdon'),
             invoice_currency = data.get('dvtte'),
             
@@ -266,7 +266,7 @@ class Invoice:
             ],
             'status': self.get_status_text(),
             'payment_method': self.payment_method, 
-            'processing status':self.get_processing_status_text(),
+            'processing_status': self.get_processing_status_text(),
             'note' : self.note
         }
     

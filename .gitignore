@@ -21,6 +21,11 @@ __pycache__/
 # Logs
 logs/
 
+# GCP Credentials
+credentials/
+*.json
+!package.json
+
 # Environment files
 .env
 .env.local
