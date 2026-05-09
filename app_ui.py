@@ -22,11 +22,14 @@ class TextRedirector:
         self.tag = tag
 
     def write(self, text):
-        self.widget.configure(state="normal")
-        self.widget.insert(tk.END, text, self.tag)
-        self.widget.see(tk.END)
-        self.widget.configure(state="disabled")
-        self.widget.update_idletasks()
+        try:
+            self.widget.configure(state="normal")
+            self.widget.insert(tk.END, text, self.tag)
+            self.widget.see(tk.END)
+            self.widget.configure(state="disabled")
+            self.widget.update_idletasks()
+        except tk.TclError:
+            sys.__stdout__.write(text)
 
     def flush(self):
         pass
@@ -60,6 +63,7 @@ class LoginWindow:
         sys.path.insert(0, os.path.dirname(__file__))
         self.auth = AuthManager()
         self.captcha_key = None
+        self.captcha_file = None
 
         self._build_ui()
         self._load_captcha()
@@ -235,10 +239,21 @@ class LoginWindow:
         threading.Thread(target=self._fetch_captcha, daemon=True).start()
 
     def _fetch_captcha(self):
-        self.captcha_key = self.auth.save_captcha_image("captcha.svg")
+        if self.captcha_file and os.path.exists(self.captcha_file):
+            try:
+                os.remove(self.captcha_file)
+            except Exception:
+                pass
+        new_file = f"captcha_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.svg"
+        self.captcha_key = self.auth.save_captcha_image(new_file)
         if self.captcha_key:
+            self.captcha_file = new_file
+            try:
+                os.startfile(new_file)
+            except Exception as e:
+                print(f"⚠️  Không mở được captcha tự động: {e}")
             self.root.after(0, lambda: self.captcha_status.set(
-                "✅ Captcha đã tải — click để xem ảnh"
+                "✅ Captcha đã tải — click để xem lại ảnh"
             ))
         else:
             self.root.after(0, lambda: self.captcha_status.set(
@@ -250,8 +265,10 @@ class LoginWindow:
         self._load_captcha()
 
     def _open_captcha_file(self):
+        if not self.captcha_file:
+            return
         try:
-            os.startfile("captcha.svg")
+            os.startfile(self.captcha_file)
         except Exception:
             pass
 
@@ -284,6 +301,12 @@ class LoginWindow:
 
     def _do_login(self, username, password, captcha_value):
         result = self.auth.login(username, password, captcha_value, self.captcha_key)
+        if self.captcha_file and os.path.exists(self.captcha_file):
+            try:
+                os.remove(self.captcha_file)
+            except Exception:
+                pass
+            self.captcha_file = None
         if result["success"]:
             config.TOKEN = result["token"]
             self.auth.update_config_file()
@@ -296,6 +319,10 @@ class LoginWindow:
         self.status_var.set(f"❌ {msg[:120]}")
         self.login_btn.config(state="normal", text="🔐  Đăng nhập")
         self._reload_captcha()
+        messagebox.showerror(
+            "Đăng nhập thất bại",
+            f"{msg[:300]}\n\nCaptcha đã được làm mới, vui lòng thử lại."
+        )
 
 
 # ══════════════════════════════════════════════════════════
@@ -655,8 +682,14 @@ class InvoiceApp:
         ).pack(side=tk.LEFT, padx=12)
 
     def _redirect_output(self):
+        self._orig_stdout = sys.stdout
+        self._orig_stderr = sys.stderr
         sys.stdout = TextRedirector(self.log_box, "stdout")
         sys.stderr = TextRedirector(self.log_box, "stderr")
+
+    def _restore_output(self):
+        sys.stdout = getattr(self, "_orig_stdout", sys.__stdout__)
+        sys.stderr = getattr(self, "_orig_stderr", sys.__stderr__)
 
     def _toggle_token_visibility(self):
         self.show_token = not self.show_token
@@ -726,7 +759,7 @@ class InvoiceApp:
     def _on_logout(self):
         if messagebox.askyesno("Đăng xuất", "Bạn có muốn đăng xuất không?"):
             config.TOKEN = ""
-            self.root.withdraw()
+            self._restore_output()
             show_login(self.root)
 
     def _on_run(self):

@@ -5,8 +5,27 @@ Data models cho hóa đơn
 
 from typing import List, Optional, Dict, Any
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from enum import Enum
+
+
+_VN_TZ = timezone(timedelta(hours=7))
+
+
+def _utc_to_vn_date(raw: Optional[str]) -> str:
+    """
+    Convert chuỗi UTC ISO (vd '2026-03-30T17:00:00Z') → ngày VN 'YYYY-MM-DD'.
+    Trả về '' nếu raw rỗng; giữ nguyên raw nếu parse fail.
+    """
+    if not raw:
+        return ''
+    try:
+        dt_utc = datetime.fromisoformat(raw.replace('Z', '+00:00'))
+        if dt_utc.tzinfo is None:
+            dt_utc = dt_utc.replace(tzinfo=timezone.utc)
+        return dt_utc.astimezone(_VN_TZ).strftime('%Y-%m-%d')
+    except (ValueError, TypeError):
+        return raw
 
 class InvoiceStatus(Enum):
     """Enum cho trạng thái hóa đơn"""
@@ -188,7 +207,7 @@ class Invoice:
             invoice_template=data.get('khmshdon'),
             invoice_serial=data.get('khhdon'),
             invoice_number=data.get('shdon'),
-            invoice_date=data.get('tdlap') or '',
+            invoice_date=_utc_to_vn_date(data.get('tdlap')),
             lookup_code=data.get('mhdon'),
             invoice_currency = data.get('dvtte'),
             
@@ -270,9 +289,9 @@ class Invoice:
             'note' : self.note
         }
     
-    def __str__(self) -> str:
-        """String representation"""
-        return f"Invoice({self.invoice_serial}-{self.invoice_number}, {self.total_amount:,.0f} VNĐ)"
+    # def __str__(self) -> str:
+    #     """String representation"""
+    #     return f"Invoice({self.invoice_serial}-{self.invoice_number}, {self.total_amount:,.0f} VNĐ)"
     
     def get_status_text(self) -> str:
         """Lấy text mô tả trạng thái"""

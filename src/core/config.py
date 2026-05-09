@@ -5,8 +5,16 @@ Quản lý tất cả cấu hình của hệ thống
 
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Optional
+
+
+def _app_dir() -> Path:
+    """Thư mục gốc của app — .exe folder khi frozen, project root khi chạy source."""
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+    return Path(__file__).resolve().parents[2]
 
 
 def _load_deploy_sh_env() -> None:
@@ -15,7 +23,7 @@ def _load_deploy_sh_env() -> None:
     Env var đã set sẵn sẽ được ưu tiên (setdefault). Giúp app chạy được từ
     PowerShell/cmd/IDE mà không cần `source deploy.sh` trong cùng shell.
     """
-    deploy_path = Path(__file__).resolve().parents[2] / "deploy.sh"
+    deploy_path = _app_dir() / "deploy.sh"
     if not deploy_path.exists():
         return
 
@@ -48,10 +56,10 @@ class Config:
     """Cấu hình hệ thống"""
     
     # ================= AUTHENTICATION =================
-    TOKEN: str = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTAyMjMzNTE4IiwidHlwZSI6MiwiZXhwIjoxNzc2MzE1NjI0LCJpYXQiOjE3NzYyMjkyMjR9.HYbv1bN0AK30tOUhgZ3R29A4PAIAEJtLX31h75VAlwHRJ3bvw8RQvH7ZHvULfmfszGpfx6mbYutkSEwBOqRmcg"
+    TOKEN: str = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTAyMjMzNTE4IiwidHlwZSI6MiwiZXhwIjoxNzc4Mzk5MDAyLCJpYXQiOjE3NzgzMTI2MDJ9.F9oUpePosnQq8Bvi3J7O2l9yup7L7ZhO4sni6xDhC41-wXKibEL0fsPvEzmSRk1T348-4jSYHrvViwNVDB3Bqw"
     
     # ================= API ENDPOINTS =================
-    BASE_URL: str = "https://hoadondientu.gdt.gov.vn:30000"
+    BASE_URL: str = "https://hoadondientu.gdt.gov.vn/api"
     DOMAIN: str = "https://hoadondientu.gdt.gov.vn"
     
     # ================= DEFAULT SETTINGS =================

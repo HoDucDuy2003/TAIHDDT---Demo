@@ -168,21 +168,13 @@ class AuthManager:
             Captcha key nếu thành công, None nếu thất bại
         """
         captcha = self.get_captcha_image()
-        
+
         if captcha:
             with open(filename, "wb") as f:
                 f.write(captcha["image_bytes"])
             print(f"✅ Đã lưu captcha: {filename}")
-
-            # Mở file tự động
-            try:
-                os.startfile(filename)          # Windows
-            except AttributeError:
-                import subprocess
-                subprocess.run(["open", filename])  # macOS
-            
             return captcha["key"]
-        
+
         return None
     
     def _save_token_to_file(self, filename: str = "token.json"):

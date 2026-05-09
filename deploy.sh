@@ -1,15 +1,19 @@
 #!/bin/bash
 # ============================================================
 # GCP Configuration for Invoice System
-# Usage: source deploy.sh
+# Usage: source deploy.sh  (có thể source từ bất kỳ thư mục nào)
 # ============================================================
+
+# Anchor paths to this script's directory so `source` works from any CWD
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 # ================= CONFIG =================
 export GCP_PROJECT_ID="minhhai"
 export GCS_BUCKET_NAME="invoices-tax-portal-vn"
 export BQ_DATASET="invoices_tax_portal"
 export GCP_REGION="asia-southeast1"
-export GOOGLE_APPLICATION_CREDENTIALS="credentials/sa-key.json"
+export GOOGLE_APPLICATION_CREDENTIALS="$SCRIPT_DIR/credentials/sa-key.json"
 
 SA_NAME="invoice-loader"
 SA_EMAIL="${SA_NAME}@${GCP_PROJECT_ID}.iam.gserviceaccount.com"
